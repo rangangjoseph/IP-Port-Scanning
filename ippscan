@@ -1,0 +1,45 @@
+#! /bin/bash
+
+# Script for scanner IP address for open ports
+show_logo() {
+    clear
+    cat /home/joseph/Desktop/logo.txt
+    echo
+}
+
+while true; do
+    show_logo
+    echo "=============Main Menu============="
+    echo "1) Scan IP Address"
+    echo "2) Scan specific Port of an IP Adress"
+    echo "3) Quit"
+    echo -n "Select Option (1-3): "
+    read choice
+
+    case "$choice" in
+        1)
+            read -p "Enter target IP/Host Adress: " ipaddr
+            echo "Scanning for open ports on $ipaddr....."
+            nmap -sC -sV $ipaddr --min-rate 5000 > /dev/null -oG myipscan
+            cat myipscan | grep open > ipscan.txt
+            cat ipscan.txt
+            ;;
+        2)  
+            read -p "Enter target IP/Host Address: " ipaddr
+            read -p "Enter port number: " port
+            echo "Scaning for port $port on $ipaddr....."
+            nmap -sC -sV $ipaddr -p $port --min-rate 5000 > /dev/null -oG myipscan
+            cat myipscan | grep open > portscan.txt
+            cat portscan.txt
+            ;;
+        3)
+            echo "Exiting the program..Wait!!..."
+            break
+            ;;
+        *)
+            echo "Invalid Option, please try again."
+            ;;
+    esac
+    echo 
+    read -p "Press Enter to return to menu...." dummy
+ done
