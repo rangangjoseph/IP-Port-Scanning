@@ -1,14 +1,15 @@
 #! /bin/bash
 
 # Script for scanner IP address for open ports
-show_logo() {
-    clear
-    cat /home/joseph/Desktop/logo.txt
-    echo
-}
-
+echo "
+        _              _  ___             
+       | | ___   ___  | |/ (_)_ __   __ _
+    _  | |/ _ \ / _ \ | ' /| | '_ \ / _  |
+   | |_| | (_) |  __/ | . \| | | | | (_| |
+    \___/ \___/ \___| |_|\_\_|_| |_|\__, |
+                                     |___/"
+                                  
 while true; do
-    show_logo
     echo "=============Main Menu============="
     echo "1) Scan IP Address"
     echo "2) Scan specific Port of an IP Adress"
@@ -43,3 +44,4 @@ while true; do
     echo 
     read -p "Press Enter to return to menu...." dummy
  done
+                                  
